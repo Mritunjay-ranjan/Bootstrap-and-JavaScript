@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Show Date and Time</title>
+</head>
+<body>
+<h1>Show Date and Time</h1>
+<button type="button" onclick="showDate()">Show Date</button>
+<button type="button" onclick="showTime()">Show Time</button>
+<p id="date_time_display"></p>
+<script>
+function showDate() {
+  var date = new Date();
+  document.getElementById("date_time_display").innerHTML = date.toLocaleDateString();
+}
+
+function showTime() {
+  var date = new Date();
+  document.getElementById("date_time_display").innerHTML = date.toLocaleTimeString();
+}
+</script>
+</body>
+</html>
