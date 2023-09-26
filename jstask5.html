@@ -1,0 +1,140 @@
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn...">
+<script src="https://ajax.googleapis.com..."></script>
+<script src="https://maxcdn.bootstrapcdn..."></script>
+<style>
+.error{
+display: none;
+margin-left: 10px;
+}
+
+.error_show{
+color: red;
+margin-left: 10px;
+}
+input.invalid, textarea.invalid{
+border: 2px solid red;
+}
+
+input.valid, textarea.valid{
+border: 2px solid green;
+}
+</style>
+<script>
+$(document).ready(function() {
+//jQuery code goes here
+// Name can't be blank
+$('#contact_name').on('input', function() {
+var input=$(this);
+var is_name=input.val();
+if(is_name){input.removeClass("invalid").addClass("valid");}
+else{input.removeClass("valid").addClass("invalid");}
+});
+// Email must be an email
+$('#contact_email').on('input', function() {
+var input=$(this);
+var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+var is_email=re.test(input.val());
+if(is_email){input.removeClass("invalid").addClass("valid");}
+else{input.removeClass("valid").addClass("invalid");}
+});
+// Website must be a website
+$('#contact_website').on('input', function() {
+var input=$(this);
+if (input.val().substring(0,4)=='www.'){input.val('http://www.'+input.val().substring(4));}
+var re = /(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])?/;
+var is_url=re.test(input.val());
+if(is_url){input.removeClass("invalid").addClass("valid");}
+else{input.removeClass("valid").addClass("invalid");}
+});
+// Message can't be blank
+$('#contact_message').keyup(function(event) {
+var input=$(this);
+var message=$(this).val();
+console.log(message);
+if(message){input.removeClass("invalid").addClass("valid");}
+else{input.removeClass("valid").addClass("invalid");} 
+});
+// Password can't be blank
+$('#contact_pws').on('input', function() {
+var input=$(this);
+var is_name=input.val();
+if(is_name){input.removeClass("invalid").addClass("valid");}
+else{input.removeClass("valid").addClass("invalid");}
+});
+// After Form Submitted Validation
+$("#contact_submit button").click(function(event){
+var form_data=$("#contact").serializeArray();
+var error_free=true;
+for (var input in form_data){
+var element=$("#contact_"+form_data[input]['name']);
+var valid=element.hasClass("valid");
+var error_element=$("span", element.parent());
+if (!valid){error_element.removeClass("error").addClass("error_show"); error_free=false;}
+else{error_element.removeClass("error_show").addClass("error");}
+}
+if (!error_free){
+event.preventDefault(); 
+}
+else{
+alert('No errors: Form will be submitted');
+}
+});
+});
+</script>
+</head>
+<body>
+
+<div class="container">
+
+
+
+
+
+<form class="form-inline" action="/action_page.php">
+
+<div class="form-group">
+<label for="name">Name:</label>
+<input type="text" class="form-control" id="contact_name" placeholder="Enter name" name="email">
+This field is required
+</div>
+
+<div class="form-group">
+<label for="email">Email:</label>
+<input type="email" class="form-control" id="contact_email" placeholder="Enter email" name="email">
+A valid email address is required
+</div>
+
+<div class="form-group">
+<label for="contact_website">Website:</label>
+<input type="url" class="form-control" id="contact_website" placeholder="Enter email" name="website">
+A valid url is required
+</div>
+
+<div class="form-group">
+<label for="contact_message">Message:</label>
+<textarea class="form-control" id="contact_message" placeholder="Enter message" name="message"></textarea>
+Message content is required
+</div>
+
+<div class="form-group">
+<label for="contact_pws">Password:</label>
+<input type="password" class="form-control" id="contact_pws" placeholder="Enter password" name="pwd">
+A valid password is required
+</div>
+<div class="checkbox">
+<label><input type="checkbox" name="remember"> Remember me</label>
+</div>
+
+<div id="contact_submit">
+<button type="submit" class="btn btn-success">Submit</button>
+</div>
+</form>
+</div>
+
+</body>
+</html>
