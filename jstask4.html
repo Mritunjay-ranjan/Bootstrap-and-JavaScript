@@ -1,23 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Show Date and Time</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS | Task-4</title>
+    <script src="script.js"></script>
 </head>
 <body>
-<h1>Show Date and Time</h1>
-<button type="button" onclick="showDate()">Show Date</button>
-<button type="button" onclick="showTime()">Show Time</button>
-<p id="date_time_display"></p>
-<script>
-function showDate() {
-  var date = new Date();
-  document.getElementById("date_time_display").innerHTML = date.toLocaleDateString();
-}
-
-function showTime() {
-  var date = new Date();
-  document.getElementById("date_time_display").innerHTML = date.toLocaleTimeString();
-}
-</script>
+    <button onclick="showDate()">Show Date</button>
+    <div>
+        <span id="date"></span>
+    </div>
+    <br>
+    <button onclick="showTime()">Show Time</button>
+    <div>
+        <span id="time"></span>
+    </div>
 </body>
 </html>
