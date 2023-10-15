@@ -1,13 +1,27 @@
-function multiplyBy()
-{
-        num1 = document.getElementById("firstNumber").value;
-        num2 = document.getElementById("secondNumber").value;
-        document.getElementById("result").innerHTML = num1 * num2;
+function multiply(){
+    let inputElement = document.getElementById("num1");
+    let number = parseInt(inputElement.value);
+    let inputElement1 = document.getElementById("num2");
+    let number1 = parseInt(inputElement1.value);
+
+    if (!isNaN(number)) {
+        let reversedNumber = parseInt(number*number1);
+        document.getElementById("output").textContent = reversedNumber;
+    } else {
+        alert("Please enter a valid number.");
+    }
 }
 
-function divideBy() 
-{ 
-        num1 = document.getElementById("firstNumber").value;
-        num2 = document.getElementById("secondNumber").value;
-document.getElementById("result").innerHTML = num1 / num2;
+function divide(){
+    let inputElement = document.getElementById("num1");
+    let number = parseInt(inputElement.value);
+    let inputElement1 = document.getElementById("num2");
+    let number1 = parseInt(inputElement1.value);
+
+    if (!isNaN(number)) {
+        let reversedNumber = parseInt(number/number1);
+        document.getElementById("output").textContent = reversedNumber;
+    } else {
+        alert("Please enter a valid number.");
+    }
 }
